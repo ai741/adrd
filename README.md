@@ -11,7 +11,7 @@ pip install --force-reinstall pillow
 官方的 Stable-diffusion-model v1.4 检查点是必要的，你可以在 [huggingface](https://huggingface.co/CompVis/stable-diffusion-v-1-4-original/blob/main/sd-v1-4.ckpt) 上找到它。目前，可通过运行下面的命令来下载该模型：
 ```bash
 wget -c https://huggingface.co/CompVis/stable-diffusion-v-1-4-original/resolve/main/sd-v1-4.ckpt
-mv sd-v1-4.ckpt models/ldm/models/sd-v1-4/sd-v1-4.ckpt
+mv sd-v1-4.ckpt ldm/models/sd-v1-4/sd-v1-4.ckpt
 ```
 # 用法
 mist.py文件将你准备好的数据集(扩散模型生成图片)进行寻找通用扰动并将扰动存储下来
