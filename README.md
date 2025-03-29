@@ -1,5 +1,4 @@
 # 设置
-我们的实验机器系统为win11，并且安装了cuda11.6
 我们的代码基于 stable-diffusion 构建，并且和 stable-diffusion 共享大部分依赖。另外，执行攻击操作需要使用 advertorch 0.2.4 版本。若要完成环境搭建，请运行如下命令：
 ```bash
 conda env create -f environments.yml
@@ -14,15 +13,15 @@ wget -c https://huggingface.co/CompVis/stable-diffusion-v-1-4-original/resolve/m
 mv sd-v1-4.ckpt ldm/models/sd-v1-4/sd-v1-4.ckpt
 ```
 # 用法
-mist.py文件将你准备好的数据集(扩散模型生成图片)进行寻找通用扰动并将扰动存储下来
+mist.py用于计算通用扰动，可通过`--input_dir_path`定义输入图像数据集的路径，`--save_path`定义通用扰动的保存路径。
 示例
 ```bash
-python mist.py --input_dir_path datasets/train-1 --output_dir datasets/raodong/train-1 --save_path data/ckpt/train1.pt
+python ADRD.py --input_dir_path datasets/train-1 --output_dir datasets/raodong/train-1 --save_path data/ckpt/train1.pt
 ```
-mist-jiazai.py将你寻找到的通用扰动加入到你的所有图片当中
+mist-jiazai.py将通用扰动加入待检测的图像数据集当中。
 示例
 ```bash
-python mist-jiazai.py --delta_path data/ckpt/train1.pt --base_dir datasets --folders "ADM,DALLE2" --input_output_pairs "0-real,0-real-rd 1-fake,1-fake-rd"
+python ADRD-jiazai.py --delta_path data/ckpt/train1.pt --base_dir datasets --folders "ADM,DALLE2" --input_output_pairs "0-real,0-real-rd 1-fake,1-fake-rd"
 ```
 ## 训练svm分类器
 ### 训练+验证
